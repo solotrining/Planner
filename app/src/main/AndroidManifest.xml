@@ -14,7 +14,13 @@
         android:theme="@style/Theme.ProjectSilSoup"
         tools:targetApi="31">
         <activity
-            android:name="com.example.projectsilsoup.view.activity.MainActivity"
+            android:name=".view.activity.WritePeriodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.WriteEveryDayScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

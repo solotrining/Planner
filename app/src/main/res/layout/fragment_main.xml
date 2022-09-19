@@ -22,6 +22,7 @@
         android:layout_width="290dp"
         android:layout_height="183dp"
         android:background="@drawable/coner_skyblue"
+        android:elevation="15dp"
         android:ellipsize="end"
         android:gravity="center_vertical|center_horizontal"
         android:maxLines="5"
@@ -30,15 +31,12 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:elevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162" />
-
-
+        app:layout_constraintVertical_bias="0.434" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

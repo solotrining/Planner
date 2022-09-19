@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_array">
+        <item>전체</item>
+        <item>끝난 계획만</item>
+        <item>기간 계획만</item>
+        <item>매일 계획만</item>
+    </string-array>
+</resources>
