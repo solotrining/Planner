@@ -244,7 +244,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
             android:text="매핑이란 계획이 지켜짐에 따라 나에게 일어날 긍정적인 효과를 말해요.
-           \nex) 다이어트로 인해 혈당 수치를 유지하거나 줄일 수 있다."
+\nex) 다이어트로 인해 혈당 수치를 유지하거나 줄일 수 있다."
             android:textColor="@color/black"
             android:textSize="11sp"
             android:textStyle="bold"
