@@ -8,10 +8,17 @@
         <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/drawable/coner.xml" value="0.1985" />
         <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/drawable/coner_skyblue.xml" value="0.1" />
         <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/drawable/coner_spinner_white.xml" value="0.1" />
+        <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/drawable/rectangle.xml" value="0.156" />
+        <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/drawable/schedule_item.xml" value="0.155" />
         <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
+        <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/layout/activity_write.xml" value="0.16" />
+        <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/layout/activity_write_every_day_schdule.xml" value="0.1421875" />
+        <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/layout/activity_write_period.xml" value="0.2" />
         <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/layout/fragment_main.xml" value="0.22" />
         <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/layout/fragment_schedule.xml" value="0.33" />
         <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/layout/fragment_write_schedule.xml" value="0.296195652173913" />
+        <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/layout/item_schedule.xml" value="0.25" />
+        <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/layout/write_toolbar.xml" value="0.14114583333333333" />
         <entry key="..\:/Users/DGSW/AndroidStudioProjects/ProjectSilSoup/app/src/main/res/menu/bottom_navigation.xml" value="0.32083333333333336" />
       </map>
     </option>
