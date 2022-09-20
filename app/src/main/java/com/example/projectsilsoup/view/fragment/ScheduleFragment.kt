@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.example.projectsilsoup.R
 import com.example.projectsilsoup.databinding.FragmentScheduleBinding
+import com.example.projectsilsoup.listener.ItemSelectedListenerSchedule
 
 
 class ScheduleFragment : Fragment() {
@@ -24,31 +25,7 @@ class ScheduleFragment : Fragment() {
         val adapter = ArrayAdapter<String>(requireContext(), com.google.android.material.R.layout.support_simple_spinner_dropdown_item, items)
 
         binding.spinner.adapter = adapter
-        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                when (position) {
-                    0 -> {
-                        Log.e("0", "전체 불러오기")
-                    }
-
-                    1 -> {
-                        Log.e("1", "끝난 계획 불러오기")
-                    }
-
-                    2 -> {
-                        Log.e("2", "기간 계획 불러오기")
-                    }
-
-                    3 -> {
-                        Log.e("3", "매일 계획 불러오기")
-                    }
-                }
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                Log.e("아무것도 선택안됨", "전체 불러오셈ㅇㅇ")
-            }
-        }
+        binding.spinner.onItemSelectedListener = ItemSelectedListenerSchedule()
 
         return binding.root
     }
