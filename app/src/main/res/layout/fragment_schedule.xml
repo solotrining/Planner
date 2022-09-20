@@ -8,6 +8,7 @@
     tools:context=".view.fragment.ScheduleFragment">
 
     <Spinner
+        android:id="@+id/spinner"
         android:layout_width="79dp"
         android:layout_height="25dp"
         android:layout_marginStart="16dp"
