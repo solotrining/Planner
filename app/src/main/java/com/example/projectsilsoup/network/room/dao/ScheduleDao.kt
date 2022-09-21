@@ -20,6 +20,9 @@ interface ScheduleDao {
     @Query("select * from schedule where category = :category")
     fun getPlanByCategory(category : String) : List<ScheduleEntity>
 
+    @Query("select * from schedule where Date = :date")
+    fun getPlanByDate(date : String) : List<ScheduleEntity>
+
     //Insert, Update
     @Insert (onConflict = REPLACE)
     fun insertPlan(schedule : ScheduleEntity)
