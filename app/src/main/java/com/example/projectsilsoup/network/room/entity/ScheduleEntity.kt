@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "schedule")
 class ScheduleEntity (@ColumnInfo var title : String,
                       @ColumnInfo var content : String,
-                      @ColumnInfo var category: String) {
+                      @ColumnInfo var category: String,
+                      @ColumnInfo var isFinish : Boolean) {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo
