@@ -30,4 +30,5 @@ interface ScheduleDao {
     //Delete
     @Delete
     fun deletePlan(schedule: ScheduleEntity)
+
 }

@@ -40,5 +40,13 @@ class ScheduleModel private constructor(): ViewModel() {
         return helper?.scheduleDao()!!.getPlanByDate(date)
     }
 
+    fun deletePlan(entity: ScheduleEntity) {
+        helper?.scheduleDao()!!.deletePlan(entity)
+    }
+
+    fun deleteAll(entities : List<ScheduleEntity>) {
+        entities.forEach { helper?.scheduleDao()!!.deletePlan(it) }
+    }
+
 
 }
