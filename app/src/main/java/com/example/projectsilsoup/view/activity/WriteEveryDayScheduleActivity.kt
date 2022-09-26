@@ -7,6 +7,7 @@ import androidx.core.widget.addTextChangedListener
 import com.example.projectsilsoup.R
 import com.example.projectsilsoup.category.Category
 import com.example.projectsilsoup.databinding.ActivityWriteBinding
+import com.example.projectsilsoup.listener.textchanged.WriteEveryDayScheduleTextChanged
 import com.example.projectsilsoup.network.room.entity.ScheduleEntity
 import com.example.projectsilsoup.vm.activity.WriteScheduleModel
 
@@ -22,17 +23,8 @@ class WriteEveryDayScheduleActivity : AppCompatActivity() {
 
         setInvisible()
 
-        binding.periodTitle.addTextChangedListener{
-            if ( binding.periodTitle.text.toString() != "" && binding.periodContent.text.toString() != "") {
-                binding.write.setTextColor(getColor(R.color.black))
-                binding.write.setOnClickListener {
-                    val entity = ScheduleEntity(binding.periodTitle.text.toString(), binding.periodContent.text.toString(), Category.EVERYDAY.toString(), false)
-                    entity.error = binding.periodWarningContent.text.toString()
-                    entity.mapping = binding.periodMapping.text.toString()
-                    model.insertAndUpdate(entity)
-                }
-            }
-        }
+        binding.periodTitle.addTextChangedListener(WriteEveryDayScheduleTextChanged(binding, model, this))
+        binding.periodContent.addTextChangedListener(WriteEveryDayScheduleTextChanged(binding, model, this))
 
     }
 

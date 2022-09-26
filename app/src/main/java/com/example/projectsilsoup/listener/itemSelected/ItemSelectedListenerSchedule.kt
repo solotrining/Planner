@@ -1,4 +1,4 @@
-package com.example.projectsilsoup.listener
+package com.example.projectsilsoup.listener.itemSelected
 
 import android.util.Log
 import android.view.View
