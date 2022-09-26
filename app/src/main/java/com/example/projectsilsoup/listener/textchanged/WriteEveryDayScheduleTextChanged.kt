@@ -1,12 +1,14 @@
 package com.example.projectsilsoup.listener.textchanged
 
 import android.content.Context
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import com.example.projectsilsoup.R
 import com.example.projectsilsoup.category.Category
 import com.example.projectsilsoup.databinding.ActivityWriteBinding
 import com.example.projectsilsoup.network.room.entity.ScheduleEntity
+import com.example.projectsilsoup.view.activity.MainActivity
 import com.example.projectsilsoup.vm.activity.WriteScheduleModel
 
 class WriteEveryDayScheduleTextChanged(var binding : ActivityWriteBinding,
@@ -24,6 +26,7 @@ class WriteEveryDayScheduleTextChanged(var binding : ActivityWriteBinding,
                 entity.error = binding.periodWarningContent.text.toString()
                 entity.mapping = binding.periodMapping.text.toString()
                 model.insertAndUpdate(entity)
+                context.startActivity(Intent(context,MainActivity::class.java))
             }
         } else {
             binding.write.setTextColor(context.getColor(R.color.gray))

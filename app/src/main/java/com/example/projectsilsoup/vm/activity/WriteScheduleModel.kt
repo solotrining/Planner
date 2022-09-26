@@ -4,6 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.projectsilsoup.network.room.entity.ScheduleEntity
 import com.example.projectsilsoup.network.room.helper.ScheduleHelper
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class WriteScheduleModel private constructor() : ViewModel(){
 
@@ -29,7 +32,9 @@ class WriteScheduleModel private constructor() : ViewModel(){
     }
 
     fun insertAndUpdate(entity : ScheduleEntity) {
-        helper?.scheduleDao()!!.insertPlan(entity)
+        CoroutineScope(Dispatchers.Default).launch {
+            helper?.scheduleDao()!!.insertPlan(entity)
+        }
     }
 
 }
