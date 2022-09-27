@@ -16,6 +16,16 @@
             layout="@layout/write_toolbar" />
 
         <TextView
+            android:id="@+id/isChange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/include"
+            app:layout_constraintEnd_toStartOf="@+id/write"
+            app:layout_constraintStart_toEndOf="@+id/write" />
+
+        <TextView
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -275,6 +285,7 @@
             app:layout_constraintTop_toBottomOf="@+id/period_mapping" />
 
         <TextView
+            android:id="@+id/cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="취소"
@@ -290,10 +301,11 @@
 
 
         <TextView
+            android:id="@+id/write"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="작성"
-            android:textColor="#D5D3D3"
+            android:textColor="@color/gray"
             android:textSize="27sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/include"
