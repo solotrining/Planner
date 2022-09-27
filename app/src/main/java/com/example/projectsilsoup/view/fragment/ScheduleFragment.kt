@@ -31,9 +31,11 @@ class ScheduleFragment : Fragment() {
         val spinnerAdapter = ArrayAdapter(requireContext(), com.google.android.material.R.layout.support_simple_spinner_dropdown_item, items)
 
         binding.spinner.adapter = spinnerAdapter
-        val itemSelectedListenerSchedule = ItemSelectedListenerSchedule(model.getHelper())
+        val itemSelectedListenerSchedule = ItemSelectedListenerSchedule(model)
 
         binding.spinner.onItemSelectedListener = itemSelectedListenerSchedule
+
+        scheduleList = model.getAll()
 
         itemSelectedListenerSchedule.list.observe(this.viewLifecycleOwner) {
             scheduleList = it

@@ -24,10 +24,6 @@ class ScheduleModel private constructor(): ViewModel() {
         this.helper = helper
     }
 
-    fun getHelper() : ScheduleHelper {
-        return helper!!
-    }
-
     fun getAll() : List<ScheduleEntity> {
         return helper?.scheduleDao()!!.getAll()
     }
