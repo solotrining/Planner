@@ -12,6 +12,8 @@ import com.example.projectsilsoup.databinding.FragmentScheduleBinding
 import com.example.projectsilsoup.listener.itemSelected.ItemSelectedListenerSchedule
 import com.example.projectsilsoup.network.room.entity.ScheduleEntity
 import com.example.projectsilsoup.view.adapter.recycler.GridViewAdapter
+import com.example.projectsilsoup.view.adapter.recycler.decoration.RecyclerDecorationHeight
+import com.example.projectsilsoup.view.adapter.recycler.decoration.RecyclerDecorationWidth
 import com.example.projectsilsoup.vm.fragment.ScheduleModel
 
 
@@ -44,6 +46,8 @@ class ScheduleFragment : Fragment() {
         val recyclerAdapter = GridViewAdapter()
         recyclerAdapter.list.addAll(scheduleList?: listOf())
 
+        binding.scheduleRecycler.addItemDecoration(RecyclerDecorationHeight(50))
+        binding.scheduleRecycler.addItemDecoration(RecyclerDecorationWidth(30))
         binding.scheduleRecycler.adapter = recyclerAdapter
         binding.scheduleRecycler.layoutManager = GridLayoutManager(context,2)
 
