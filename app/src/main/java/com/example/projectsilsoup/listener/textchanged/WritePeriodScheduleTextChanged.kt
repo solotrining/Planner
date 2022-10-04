@@ -30,6 +30,7 @@ class WritePeriodScheduleTextChanged(var binding : ActivityWriteBinding,
                 )
                 entity.error = binding.periodWarningContent.text.toString()
                 entity.mapping = binding.periodMapping.text.toString()
+                entity.date = binding.startDate.text.toString() + "~" + binding.finishDate.text.toString()
                 model.insertAndUpdate(entity)
                 context.startActivity(Intent(context, MainActivity::class.java))
             }

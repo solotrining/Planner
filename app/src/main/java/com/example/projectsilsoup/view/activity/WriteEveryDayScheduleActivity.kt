@@ -29,12 +29,9 @@ class WriteEveryDayScheduleActivity : AppCompatActivity() {
     }
 
     private fun setInvisible() {
-        binding.startDay.visibility = View.GONE
-        binding.startMonth.visibility = View.GONE
-        binding.finishDay.visibility = View.GONE
-        binding.finishMonth.visibility = View.GONE
-        binding.textView4.visibility = View.GONE
-        binding.textView5.visibility = View.GONE
-        binding.textView6.visibility = View.GONE
+        binding.startDate.visibility = View.INVISIBLE
+        binding.startDateText.visibility = View.INVISIBLE
+        binding.finishDate.visibility = View.INVISIBLE
+        binding.finishDateText.visibility = View.INVISIBLE
     }
 }

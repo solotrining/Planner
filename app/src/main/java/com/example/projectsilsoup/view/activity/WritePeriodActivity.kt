@@ -1,14 +1,15 @@
 package com.example.projectsilsoup.view.activity
 
+import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import com.example.projectsilsoup.R
+
 import com.example.projectsilsoup.databinding.ActivityWriteBinding
-import com.example.projectsilsoup.listener.itemSelected.ItemSelectedListenerDay
-import com.example.projectsilsoup.listener.itemSelected.ItemSelectedListenerMonth
+
 import com.example.projectsilsoup.listener.textchanged.WritePeriodScheduleTextChanged
 import com.example.projectsilsoup.vm.activity.WriteScheduleModel
+import java.util.*
 
 class WritePeriodActivity : AppCompatActivity() {
 
@@ -16,31 +17,29 @@ class WritePeriodActivity : AppCompatActivity() {
 
     private val model = WriteScheduleModel.getInstance()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val monthItem = resources.getStringArray(R.array.month)
-        val dayItem = resources.getStringArray(R.array.day)
-
-        val monthAdapter = ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item, monthItem)
-        val dayAdapter = ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item, dayItem)
-
-
-        binding.startMonth.adapter = monthAdapter
-        binding.finishMonth.adapter = monthAdapter
-
-        binding.startDay.adapter = dayAdapter
-        binding.finishDay.adapter = dayAdapter
-
-        binding.startMonth.onItemSelectedListener = ItemSelectedListenerMonth()
-        binding.finishMonth.onItemSelectedListener = ItemSelectedListenerMonth()
-        binding.startDay.onItemSelectedListener = ItemSelectedListenerDay()
-        binding.finishDay.onItemSelectedListener = ItemSelectedListenerDay()
-
-
         binding.periodTitle.addTextChangedListener(WritePeriodScheduleTextChanged(binding, model, this))
         binding.periodContent.addTextChangedListener(WritePeriodScheduleTextChanged(binding, model, this))
 
+
+        binding.startDate.setOnClickListener {
+            val cal = Calendar.getInstance()
+            val data = DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                binding.startDate.text = "${year}/${month}/${day}"
+            }
+            DatePickerDialog(this, data, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
+        binding.finishDate.setOnClickListener {
+            val cal = Calendar.getInstance()
+            val data = DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                binding.finishDate.text = "${year}/${month}/${day}"
+            }
+            DatePickerDialog(this, data, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
+        }
     }
 }
