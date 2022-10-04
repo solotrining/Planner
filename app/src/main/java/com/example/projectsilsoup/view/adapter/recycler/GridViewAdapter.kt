@@ -2,9 +2,13 @@ package com.example.projectsilsoup.view.adapter.recycler
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projectsilsoup.R
+import com.example.projectsilsoup.category.Category
 import com.example.projectsilsoup.databinding.ItemScheduleBinding
 import com.example.projectsilsoup.network.room.entity.ScheduleEntity
 import com.example.projectsilsoup.view.activity.PlanViewActivity
@@ -12,10 +16,17 @@ import com.example.projectsilsoup.view.activity.PlanViewActivity
 class GridViewAdapter : RecyclerView.Adapter<GridViewAdapter.Holder>() {
     var list = mutableListOf<ScheduleEntity>()
 
-    inner class Holder(var binding : ItemScheduleBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class Holder(private var binding : ItemScheduleBinding) : RecyclerView.ViewHolder(binding.root) {
         fun setView(item : ScheduleEntity) {
             binding.title.text = item.title
             binding.content.text = item.content
+            if (item.category == Category.PERIOD.toString()){
+                Log.e("카테고리", "기간계획")
+                binding.title.setBackgroundColor(Color.parseColor("#A6E8FD"))
+            }else {
+                binding.title.setBackgroundColor(Color.parseColor("#BFE6BA"))
+            }
+
 
             itemView.setOnClickListener {
                 Intent(itemView.context, PlanViewActivity::class.java)

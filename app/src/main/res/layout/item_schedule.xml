@@ -12,7 +12,6 @@
         android:layout_width="190dp"
         android:layout_height="150dp"
         android:background="@drawable/schedule_item"
-        android:backgroundTint="#BFE6BA"
         android:paddingHorizontal="4dp"
         android:paddingVertical="10dp"
         android:text="무지성 다이어트"

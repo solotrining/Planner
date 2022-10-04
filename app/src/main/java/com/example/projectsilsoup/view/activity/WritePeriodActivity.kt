@@ -3,13 +3,11 @@ package com.example.projectsilsoup.view.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import androidx.core.widget.addTextChangedListener
 import com.example.projectsilsoup.R
-import com.example.projectsilsoup.category.Category
 import com.example.projectsilsoup.databinding.ActivityWriteBinding
 import com.example.projectsilsoup.listener.itemSelected.ItemSelectedListenerDay
 import com.example.projectsilsoup.listener.itemSelected.ItemSelectedListenerMonth
-import com.example.projectsilsoup.network.room.entity.ScheduleEntity
+import com.example.projectsilsoup.listener.textchanged.WritePeriodScheduleTextChanged
 import com.example.projectsilsoup.vm.activity.WriteScheduleModel
 
 class WritePeriodActivity : AppCompatActivity() {
@@ -41,24 +39,8 @@ class WritePeriodActivity : AppCompatActivity() {
         binding.finishDay.onItemSelectedListener = ItemSelectedListenerDay()
 
 
-        binding.write.addTextChangedListener {
-            if (binding.periodTitle.text.toString() != "" && binding.periodContent.text.toString() != "") {
-                binding.write.setTextColor(getColor(R.color.black))
-                binding.write.setOnClickListener {
-
-                    val entity = ScheduleEntity(binding.periodTitle.text.toString(), binding.periodContent.text.toString(), Category.PERIOD.toString(), false)
-                    entity.error = binding.periodWarningContent.text.toString()
-                    entity.mapping = binding.periodMapping.text.toString()
-                    val date = "${binding.startMonth.selectedItem}/${binding.startDay.selectedItem} ~ ${binding.finishMonth.selectedItem}/${binding.finishDay.selectedItem}"
-                    entity.date = date
-
-                    model.insertAndUpdate(entity)
-                }
-            }else {
-                binding.write.setTextColor(getColor(R.color.gray))
-                binding.write.setOnClickListener {}
-            }
-        }
+        binding.periodTitle.addTextChangedListener(WritePeriodScheduleTextChanged(binding, model, this))
+        binding.periodContent.addTextChangedListener(WritePeriodScheduleTextChanged(binding, model, this))
 
     }
 }
