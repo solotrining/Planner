@@ -22,14 +22,17 @@ class WritePeriodActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.periodTitle.addTextChangedListener(WritePeriodScheduleTextChanged(binding, model, this))
-        binding.periodContent.addTextChangedListener(WritePeriodScheduleTextChanged(binding, model, this))
+        val textChanged = WritePeriodScheduleTextChanged(binding, model,this)
 
+        binding.periodTitle.addTextChangedListener(textChanged)
+        binding.periodContent.addTextChangedListener(textChanged)
+        binding.startDate.addTextChangedListener(textChanged)
+        binding.finishDate.addTextChangedListener(textChanged)
 
         binding.startDate.setOnClickListener {
             val cal = Calendar.getInstance()
             val data = DatePickerDialog.OnDateSetListener { view, year, month, day ->
-                binding.startDate.text = "${year}/${month}/${day}"
+                binding.startDate.text = "${year}-${month}-${day}"
             }
             DatePickerDialog(this, data, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
         }
@@ -37,7 +40,7 @@ class WritePeriodActivity : AppCompatActivity() {
         binding.finishDate.setOnClickListener {
             val cal = Calendar.getInstance()
             val data = DatePickerDialog.OnDateSetListener { view, year, month, day ->
-                binding.finishDate.text = "${year}/${month}/${day}"
+                binding.finishDate.text = "${year}-${month}-${day}"
             }
             DatePickerDialog(this, data, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
         }

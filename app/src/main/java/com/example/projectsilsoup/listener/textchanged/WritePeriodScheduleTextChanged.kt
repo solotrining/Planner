@@ -19,7 +19,10 @@ class WritePeriodScheduleTextChanged(var binding : ActivityWriteBinding,
     }
 
     override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-        if (binding.periodTitle.text.toString() != "" && binding.periodContent.text.toString() != "") {
+        if (binding.periodTitle.text.toString() != ""
+            && binding.periodContent.text.toString() != ""
+            && binding.startDate.text.toString() != ""
+            && binding.finishDate.text.toString() != "") {
             binding.write.setTextColor(context.getColor(R.color.black))
             binding.write.setOnClickListener {
                 val entity = ScheduleEntity(

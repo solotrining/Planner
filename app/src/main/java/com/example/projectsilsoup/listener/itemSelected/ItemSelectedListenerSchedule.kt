@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.MutableLiveData
 import com.example.projectsilsoup.category.Category
+import com.example.projectsilsoup.databinding.FragmentScheduleBinding
 import com.example.projectsilsoup.network.room.entity.ScheduleEntity
 import com.example.projectsilsoup.network.room.helper.ScheduleHelper
 import com.example.projectsilsoup.vm.fragment.ScheduleModel
@@ -34,7 +35,7 @@ class ItemSelectedListenerSchedule(private val model: ScheduleModel) : AdapterVi
 
             3 -> {
                 Log.e("3", "매일 계획 불러오기")
-                list.value = model.getPlanByCategory(Category.PERIOD.toString())
+                list.value = model.getPlanByCategory(Category.EVERYDAY.toString())
                 Log.e("list", list.value.toString())
             }
         }

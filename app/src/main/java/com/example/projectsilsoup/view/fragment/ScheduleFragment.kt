@@ -20,6 +20,8 @@ import com.example.projectsilsoup.vm.fragment.ScheduleModel
 class ScheduleFragment : Fragment() {
 
     private var scheduleList : List<ScheduleEntity>? = null
+    private val model = ScheduleModel.getInstance()
+    private val itemSelectedListenerSchedule = ItemSelectedListenerSchedule(model)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,31 +29,31 @@ class ScheduleFragment : Fragment() {
     ): View? {
         val binding = FragmentScheduleBinding.inflate(inflater, container, false)
 
-        val model = ScheduleModel.getInstance()
-
         val items = resources.getStringArray(R.array.spinner_array)
         val spinnerAdapter = ArrayAdapter(requireContext(), com.google.android.material.R.layout.support_simple_spinner_dropdown_item, items)
 
         binding.spinner.adapter = spinnerAdapter
-        val itemSelectedListenerSchedule = ItemSelectedListenerSchedule(model)
 
         binding.spinner.onItemSelectedListener = itemSelectedListenerSchedule
 
         scheduleList = model.getAll()
 
-        itemSelectedListenerSchedule.list.observe(this.viewLifecycleOwner) {
-            scheduleList = it
-        }
 
-        val recyclerAdapter = GridViewAdapter()
-        recyclerAdapter.list.addAll(scheduleList?: listOf())
+        val recyclerAdapter = GridViewAdapter(scheduleList!!)
 
         binding.scheduleRecycler.addItemDecoration(RecyclerDecorationHeight(50))
         binding.scheduleRecycler.addItemDecoration(RecyclerDecorationWidth(30))
         binding.scheduleRecycler.adapter = recyclerAdapter
         binding.scheduleRecycler.layoutManager = GridLayoutManager(context,2)
 
+        itemSelectedListenerSchedule.list.observe(this.viewLifecycleOwner) {
+            binding.scheduleRecycler.adapter = GridViewAdapter(it)
+        }
+
         return binding.root
     }
+
+
+
 
 }
