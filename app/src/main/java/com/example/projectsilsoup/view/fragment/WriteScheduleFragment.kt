@@ -10,6 +10,7 @@ import com.example.projectsilsoup.R
 import com.example.projectsilsoup.databinding.FragmentWriteScheduleBinding
 import com.example.projectsilsoup.view.activity.WriteEveryDayScheduleActivity
 import com.example.projectsilsoup.view.activity.WritePeriodActivity
+import com.example.projectsilsoup.vm.activity.WriteScheduleModel
 
 
 class WriteScheduleFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.example.projectsilsoup.view.adapter
+package com.example.projectsilsoup.view.adapter.fragment
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
