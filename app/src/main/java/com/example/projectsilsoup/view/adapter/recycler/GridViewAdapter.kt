@@ -16,6 +16,7 @@ import com.example.projectsilsoup.databinding.ItemScheduleBinding
 import com.example.projectsilsoup.network.room.entity.ScheduleEntity
 import com.example.projectsilsoup.view.activity.PlanViewActivity
 import com.example.projectsilsoup.view.fragment.WriteScheduleFragment
+import com.example.projectsilsoup.vm.activity.WriteScheduleModel
 import com.example.projectsilsoup.vm.fragment.ScheduleModel
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -30,28 +31,25 @@ class GridViewAdapter(val list: List<ScheduleEntity>) : RecyclerView.Adapter<Gri
             binding.title.text = item.title
             binding.content.text = item.content
             if (item.category == Category.PERIOD.toString() && item.date != null){
+                if (!item.isFinish){
+
                 val sdf = SimpleDateFormat("yyyy-MM-dd")
                 val now = sdf.parse(LocalDate.now().toString())
                 val finishDate = sdf.parse(item.date!!.split("~")[1])
 
                 val compare = finishDate!!.compareTo(now)
-
-                if (compare < 0) binding.title.setBackgroundColor(Color.parseColor("#EBECEB"))
+                    if (compare < 0) {
+                        item.isFinish = true
+                        WriteScheduleModel.getInstance().insertAndUpdate(item)
+                        binding.title.setBackgroundColor(Color.parseColor("#EBECEB"))
+                    }
+                }  else if (item.isFinish)  binding.title.setBackgroundColor(Color.parseColor("#EBECEB"))
                 else binding.title.setBackgroundColor(Color.parseColor("#A6E8FD"))
 
             } else binding.title.setBackgroundColor(Color.parseColor("#BFE6BA"))
 
             itemView.setOnClickListener {
-                Intent(itemView.context, PlanViewActivity::class.java)
-                    .putExtra("title", item.title)
-                    .putExtra("content", item.content)
-                    .putExtra("category", item.category)
-                    .putExtra("date", item.date)
-                    .putExtra("id", item.id)
-                    .putExtra("error", item.error)
-                    .putExtra("mapping", item.mapping)
-                    .putExtra("finish", item.isFinish)
-                    .run { itemView.context.startActivity(this) }
+
             }
 
             itemView.setOnLongClickListener{
@@ -71,12 +69,11 @@ class GridViewAdapter(val list: List<ScheduleEntity>) : RecyclerView.Adapter<Gri
 
                         1 -> ScheduleModel.getInstance().deletePlan(item)
                     }
-                }
+                }.show()
 
                 true
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -94,3 +91,4 @@ class GridViewAdapter(val list: List<ScheduleEntity>) : RecyclerView.Adapter<Gri
     }
 
 }
+

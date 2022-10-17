@@ -1,5 +1,6 @@
 package com.example.projectsilsoup.view.activity
 
+import android.app.AlarmManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import androidx.room.Room
 import androidx.viewpager2.widget.ViewPager2
 import com.example.projectsilsoup.R
 import com.example.projectsilsoup.databinding.ActivityMainBinding
+import com.example.projectsilsoup.network.alarm.alarmManager
 import com.example.projectsilsoup.network.room.helper.ScheduleHelper
 import com.example.projectsilsoup.view.adapter.fragment.FragmentAdapter
 import com.example.projectsilsoup.view.fragment.MainFragment
@@ -18,11 +20,14 @@ import com.example.projectsilsoup.vm.fragment.ScheduleModel
 
 class MainActivity : AppCompatActivity() {
 
+    // System.currentTimeMillis() + 32400000
     private val binding by lazy {ActivityMainBinding.inflate(layoutInflater)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager?
 
         val helper = Room.databaseBuilder(this, ScheduleHelper::class.java, "schedule")
 
