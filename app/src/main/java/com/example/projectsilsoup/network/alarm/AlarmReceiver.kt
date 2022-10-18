@@ -57,6 +57,4 @@ class AlarmReceiver : BroadcastReceiver() {
 
         notificationManager?.notify(2000,builder.build())
     }
-
-
 }
