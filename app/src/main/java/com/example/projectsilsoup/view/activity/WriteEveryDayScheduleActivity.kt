@@ -11,7 +11,8 @@ import com.example.projectsilsoup.listener.textchanged.WriteEveryDayScheduleText
 import com.example.projectsilsoup.network.room.entity.ScheduleEntity
 import com.example.projectsilsoup.vm.activity.WriteScheduleModel
 
-class WriteEveryDayScheduleActivity : AppCompatActivity() {
+class
+WriteEveryDayScheduleActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityWriteBinding.inflate(layoutInflater) }
 
@@ -25,6 +26,13 @@ class WriteEveryDayScheduleActivity : AppCompatActivity() {
 
         binding.periodTitle.addTextChangedListener(WriteEveryDayScheduleTextChanged(binding, model, this))
         binding.periodContent.addTextChangedListener(WriteEveryDayScheduleTextChanged(binding, model, this))
+
+        binding.write.setOnClickListener {
+            val entity = ScheduleEntity(binding.periodTitle.text.toString(), binding.periodContent.text.toString(), Category.EVERYDAY.toString(), false)
+            entity.mapping = binding.periodMapping.text.toString()
+            entity.error = binding.periodWarningContent.text.toString()
+            model.insertAndUpdate(entity)
+        }
 
     }
 

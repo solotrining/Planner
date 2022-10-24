@@ -15,6 +15,8 @@ import com.example.projectsilsoup.category.Category
 import com.example.projectsilsoup.databinding.ItemScheduleBinding
 import com.example.projectsilsoup.network.room.entity.ScheduleEntity
 import com.example.projectsilsoup.view.activity.PlanViewActivity
+import com.example.projectsilsoup.view.activity.WriteEveryDayScheduleActivity
+import com.example.projectsilsoup.view.activity.WritePeriodActivity
 import com.example.projectsilsoup.view.fragment.WriteScheduleFragment
 import com.example.projectsilsoup.vm.activity.WriteScheduleModel
 import com.example.projectsilsoup.vm.fragment.ScheduleModel
@@ -56,16 +58,30 @@ class GridViewAdapter(val list: List<ScheduleEntity>) : RecyclerView.Adapter<Gri
                 val dialog = AlertDialog.Builder(itemView.context)
                 dialog.setItems(arrayItem) { dialog, pos ->
                     when (pos) {
-                        0 -> Intent(itemView.context, WriteScheduleFragment::class.java)
-                            .putExtra("title", item.title)
-                            .putExtra("content", item.content)
-                            .putExtra("category", item.category)
-                            .putExtra("date", item.date)
-                            .putExtra("id", item.id)
-                            .putExtra("error", item.error)
-                            .putExtra("mapping", item.mapping)
-                            .putExtra("finish", item.isFinish)
-                            .run { itemView.context.startActivity(this) }
+                        0 -> {
+                            if (item.category == Category.EVERYDAY.toString()){
+                                Intent(itemView.context, WriteEveryDayScheduleActivity::class.java)
+                                .putExtra("title", item.title)
+                                .putExtra("content", item.content)
+                                .putExtra("category", item.category)
+                                .putExtra("id", item.id)
+                                .putExtra("error", item.error)
+                                .putExtra("mapping", item.mapping)
+                                .putExtra("finish", item.isFinish)
+                                .run { itemView.context.startActivity(this) }
+                            } else {
+                                Intent(itemView.context, WritePeriodActivity::class.java)
+                                    .putExtra("title", item.title)
+                                    .putExtra("content", item.content)
+                                    .putExtra("category", item.category)
+                                    .putExtra("date", item.date)
+                                    .putExtra("id", item.id)
+                                    .putExtra("error", item.error)
+                                    .putExtra("mapping", item.mapping)
+                                    .putExtra("finish", item.isFinish)
+                                    .run { itemView.context.startActivity(this) }
+                            }
+                        }
 
                         1 -> ScheduleModel.getInstance().deletePlan(item)
                     }
