@@ -14,11 +14,11 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView" />
+        app:layout_constraintBottom_toTopOf="@+id/today_plan"
+        app:layout_constraintStart_toStartOf="@+id/today_plan" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/today_plan"
         android:layout_width="290dp"
         android:layout_height="183dp"
         android:background="@drawable/coner_skyblue"
@@ -27,7 +27,7 @@
         android:gravity="center_vertical|center_horizontal"
         android:maxLines="5"
         android:paddingHorizontal="15dp"
-        android:text="무지성 다이어트"
+        android:text="오늘 계획이 없습니다"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
