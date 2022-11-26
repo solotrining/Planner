@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.projectsilsoup.R
 import com.example.projectsilsoup.databinding.FragmentScheduleBinding
@@ -38,8 +39,9 @@ class ScheduleFragment : Fragment() {
 
         scheduleList = model.getAll()
 
+        val fm = parentFragmentManager
 
-        val recyclerAdapter = GridViewAdapter(scheduleList!!)
+        val recyclerAdapter = GridViewAdapter(scheduleList!!,this, fm)
 
         binding.scheduleRecycler.addItemDecoration(RecyclerDecorationHeight(50))
         binding.scheduleRecycler.addItemDecoration(RecyclerDecorationWidth(30))
@@ -47,7 +49,7 @@ class ScheduleFragment : Fragment() {
         binding.scheduleRecycler.layoutManager = GridLayoutManager(context,2)
 
         itemSelectedListenerSchedule.list.observe(this.viewLifecycleOwner) {
-            binding.scheduleRecycler.adapter = GridViewAdapter(it)
+            binding.scheduleRecycler.adapter = GridViewAdapter(it, this, fm)
         }
 
         return binding.root

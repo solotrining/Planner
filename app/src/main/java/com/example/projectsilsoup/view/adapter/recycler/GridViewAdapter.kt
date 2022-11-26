@@ -1,6 +1,7 @@
 package com.example.projectsilsoup.view.adapter.recycler
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
@@ -10,6 +11,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectsilsoup.category.Category
 import com.example.projectsilsoup.databinding.ItemScheduleBinding
@@ -20,7 +23,7 @@ import com.example.projectsilsoup.vm.fragment.ScheduleModel
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 
-class GridViewAdapter(val list: List<ScheduleEntity>) : RecyclerView.Adapter<GridViewAdapter.Holder>() {
+class GridViewAdapter(val list: List<ScheduleEntity>, val fragment : Fragment, val fm : FragmentManager) : RecyclerView.Adapter<GridViewAdapter.Holder>() {
 
 
     inner class Holder(private var binding : ItemScheduleBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -69,9 +72,11 @@ class GridViewAdapter(val list: List<ScheduleEntity>) : RecyclerView.Adapter<Gri
                             .putExtra("finish", item.isFinish)
                             .run { itemView.context.startActivity(this) }
 
-                        1 -> ScheduleModel.getInstance().deletePlan(item)
+                        1 -> {
+                            ScheduleModel.getInstance().deletePlan(item)
+                        }
                     }
-                }
+                }.show()
 
                 true
             }
