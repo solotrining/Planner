@@ -27,7 +27,7 @@
         android:gravity="center_vertical|center_horizontal"
         android:maxLines="5"
         android:paddingHorizontal="15dp"
-        android:text="무지성 다이어트"
+        android:text="오늘 계획이 없습니다."
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
